@@ -88,18 +88,24 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Ticket updateTicket(TicketRequest ticketRequest) {
-        Ticket ticket = new Ticket();
-        ticket.setId(ticketRequest.getId());
-        ticket.setUserId(ticketRequest.getUserId());
-        ticket.setPrfid(ticketRequest.getPrfid());
-        ticket.setFcltynm(ticketRequest.getFcltynm());
-        ticket.setPrfnm(ticketRequest.getPrfnm());
-        ticket.setScore(ticketRequest.getScore());
-        ticket.setComment(ticketRequest.getComment());
+        Optional<Ticket> ticketOptional = Optional.ofNullable(this.ticketRepository.getOne(ticketRequest.getId()));
 
-        this.ticketRepository.save(ticket);
+        if(!ticketOptional.isPresent()) {
+            throw new TicketNotFoundException("존재하지 않는 티켓입니다.");
+        } else {
+            Ticket ticket = new Ticket();
+            ticket.setId(ticketRequest.getId());
+            ticket.setUserId(ticketRequest.getUserId());
+            ticket.setPrfid(ticketRequest.getPrfid());
+            ticket.setFcltynm(ticketRequest.getFcltynm());
+            ticket.setPrfnm(ticketRequest.getPrfnm());
+            ticket.setScore(ticketRequest.getScore());
+            ticket.setComment(ticketRequest.getComment());
 
-        return ticket;
+            this.ticketRepository.save(ticket);
+
+            return ticket;
+        }
     }
 
     @Override
