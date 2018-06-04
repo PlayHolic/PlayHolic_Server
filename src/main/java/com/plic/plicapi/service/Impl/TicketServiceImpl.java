@@ -42,6 +42,51 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public List<TicketResponse> readUnscoredTickets(Long userId) {
+        List<Ticket> tickets = this.ticketRepository.findByuserIdAndScoreIsNull(userId);
+        List<TicketResponse> ticketResponses = new ArrayList<>();
+
+        tickets.forEach(ticket -> {
+            ticketResponses.add(TicketResponse.of(ticket));
+        });
+        return ticketResponses;
+    }
+
+    @Override
+    public List<TicketResponse> readScoredTickets(Long userId) {
+        List<Ticket> tickets = this.ticketRepository.findByuserIdAndScoreNotNull(userId);
+        List<TicketResponse> ticketResponses = new ArrayList<>();
+
+        tickets.forEach(ticket -> {
+            ticketResponses.add(TicketResponse.of(ticket));
+        });
+        return ticketResponses;
+    }
+
+    @Override
+    public List<TicketResponse> readNocommentTickets(Long userId) {
+        List<Ticket> tickets = this.ticketRepository.findByuserIdAndCommentIsNull(userId);
+        List<TicketResponse> ticketResponses = new ArrayList<>();
+
+        tickets.forEach(ticket -> {
+            ticketResponses.add(TicketResponse.of(ticket));
+        });
+        return ticketResponses;
+    }
+
+    @Override
+    public List<TicketResponse> readCommentTickets(Long userId) {
+        List<Ticket> tickets = this.ticketRepository.findByuserIdAndCommentNotNull(userId);
+        List<TicketResponse> ticketResponses = new ArrayList<>();
+
+        tickets.forEach(ticket -> {
+            ticketResponses.add(TicketResponse.of(ticket));
+        });
+        return ticketResponses;
+    }
+
+
+    @Override
     public Ticket updateTicket(TicketRequest ticketRequest) {
         Ticket ticket = new Ticket();
         ticket.setId(ticketRequest.getId());

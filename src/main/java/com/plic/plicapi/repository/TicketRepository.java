@@ -10,4 +10,8 @@ import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByuserId(Long userId);
+    List<Ticket> findByuserIdAndScoreIsNull(Long userId);
+    List<Ticket> findByuserIdAndScoreNotNull(Long userId);
+    List<Ticket> findByuserIdAndCommentIsNull(Long userId);
+    List<Ticket> findByuserIdAndCommentNotNull(Long userId);
 }

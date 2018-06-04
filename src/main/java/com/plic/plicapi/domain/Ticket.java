@@ -1,6 +1,5 @@
 package com.plic.plicapi.domain;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,7 +23,7 @@ public class Ticket extends BaseEntity {
     @Column(name = "PERFORMENCE_ID")
     String prfid;
 
-    @Column(name = "FACILITY_ID")
+    @Column(name = "FACILITY_NAME")
     String fcltynm;
 
     @Column(name = "PERFORMENCE_NAME")

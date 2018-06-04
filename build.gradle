@@ -31,11 +31,11 @@ dependencies {
 	compile ('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 
-	compile("joda-time:joda-time")
-	compile("org.jadira.usertype:usertype.jodatime:2.0.1")
+	compile('joda-time:joda-time')
+	compile('org.jadira.usertype:usertype.core:7.0.0.CR1')
 	runtime('com.h2database:h2:1.4.186')
 	runtime('mysql:mysql-connector-java:5.1.35')
-	compile("org.projectlombok:lombok:1.16.2")
-	compile("com.google.code.gson:gson:2.8.0")
+	compile('org.projectlombok:lombok:1.16.2')
+	compile('com.google.code.gson:gson:2.8.0')
 	
 }
