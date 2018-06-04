@@ -29,3 +29,6 @@ spring.h2.console:
 
 spring.profiles: local-test
 
+---
+spring.jpa.properties.jadira.usertype.autoRegisterUserTypes: true
+
