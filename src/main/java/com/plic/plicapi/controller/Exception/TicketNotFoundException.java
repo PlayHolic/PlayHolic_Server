@@ -1,4 +1,4 @@
-package com.plic.plicapi.controller;
+package com.plic.plicapi.controller.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

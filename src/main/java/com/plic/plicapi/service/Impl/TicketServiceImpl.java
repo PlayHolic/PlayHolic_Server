@@ -1,6 +1,6 @@
 package com.plic.plicapi.service.Impl;
 
-import com.plic.plicapi.controller.TicketNotFoundException;
+import com.plic.plicapi.controller.Exception.TicketNotFoundException;
 import com.plic.plicapi.controller.model.request.TicketRequest;
 import com.plic.plicapi.controller.model.response.TicketResponse;
 import com.plic.plicapi.domain.Ticket;

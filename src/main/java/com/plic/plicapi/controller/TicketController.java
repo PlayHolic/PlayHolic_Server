@@ -15,7 +15,7 @@ import java.util.List;
 public class TicketController {
 
     @Autowired
-    TicketService ticketService;
+    private TicketService ticketService;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTicket (@RequestBody TicketRequest ticketRequest) {
