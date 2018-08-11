@@ -8,10 +8,14 @@ import lombok.Setter;
 @Setter
 public class TicketRequest {
     Long Id;
-    Long userId;
-    String prfid;
+    String userId;
+    String mt20id;
     String fcltynm;
     String prfnm;
+    String prfruntime;
+    String prfage;
+    String prfcast;
+    String prfcrew;
     String score;
     String comment;
 }
