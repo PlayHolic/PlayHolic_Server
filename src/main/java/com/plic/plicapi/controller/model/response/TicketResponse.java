@@ -10,20 +10,28 @@ import lombok.Setter;
 @Builder
 public class TicketResponse {
     Long Id;
-    Long userId;
-    String prfid;
+    String userId;
+    String mt20id;
     String fcltynm;
     String prfnm;
     String score;
     String comment;
+    String prfruntime;
+    String prfage;
+    String prfcast;
+    String prfcrew;
 
     public static TicketResponse of(Ticket ticket) {
         return TicketResponse.builder()
                 .Id(ticket.getId())
                 .userId(ticket.getUserId())
-                .prfid(ticket.getPrfid())
+                .mt20id(ticket.getMt20id())
                 .fcltynm(ticket.getFcltynm())
                 .prfnm(ticket.getPrfnm())
+                .prfruntime(ticket.getPrfruntime())
+                .prfage(ticket.getPrfage())
+                .prfcast(ticket.getPrfcast())
+                .prfcrew(ticket.getPrfcrew())
                 .score(ticket.getScore())
                 .comment(ticket.getComment())
                 .build();

@@ -10,11 +10,13 @@ import java.util.List;
 
 public interface TicketService {
     void createTicket(TicketRequest ticketRequest);
-    List<TicketResponse> readTickets(Long userId);
-    List<TicketResponse> readUnscoredTickets(Long userId);
-    List<TicketResponse> readScoredTickets(Long userId);
-    List<TicketResponse> readNocommentTickets(Long userId);
-    List<TicketResponse> readCommentTickets(Long userId);
+    List<TicketResponse> readTickets(String userId);
+    List<TicketResponse> readUnscoredTickets(String userId);
+    List<TicketResponse> readScoredTickets(String userId);
+    List<TicketResponse> readNocommentTickets(String userId);
+    List<TicketResponse> readCommentTickets(String userId);
     Ticket updateTicket(TicketRequest ticketRequest);
     void deleteTicket(Long Id);
+    List<TicketResponse> readTicketHistory(String userId, String mt20id);
+    void updateTicketComment(Long Id);
 }
