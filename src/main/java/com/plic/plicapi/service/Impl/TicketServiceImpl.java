@@ -97,7 +97,7 @@ public class TicketServiceImpl implements TicketService {
         if(!ticketOptional.isPresent()) {
             throw new TicketNotFoundException("존재하지 않는 티켓입니다.");
         } else {
-            Ticket ticket = new Ticket();
+            Ticket ticket = ticketOptional.get();
             ticket.setId(ticketRequest.getId());
             ticket.setUserId(ticketRequest.getUserId());
             ticket.setMt20id(ticketRequest.getMt20id());
@@ -138,5 +138,19 @@ public class TicketServiceImpl implements TicketService {
         });
 
         return ticketResponses;
+    }
+
+    @Override
+    public void updateTicketComment(Long Id) {
+        Optional<Ticket> ticketOptional = Optional.ofNullable(this.ticketRepository.getOne(Id));
+
+        if(!ticketOptional.isPresent()) {
+            throw new TicketNotFoundException("존재하지 않는 티켓입니다.");
+        } else {
+            Ticket ticket = ticketOptional.get();
+            ticket.setComment(" ");
+            this.ticketRepository.save(ticket);
+        }
+
     }
 }

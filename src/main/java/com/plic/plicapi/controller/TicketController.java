@@ -66,8 +66,14 @@ public class TicketController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/history/{userId}/{mt20id}")
-    public  ResponseEntity<List<TicketResponse>> readTicketHistory (@PathVariable String userId, String mt20id) {
+    public ResponseEntity<List<TicketResponse>> readTicketHistory (@PathVariable String userId, String mt20id) {
         List<TicketResponse> ticketResponses = this.ticketService.readTicketHistory(userId, mt20id);
         return  new ResponseEntity<>(ticketResponses, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/comment/{Id}")
+    public ResponseEntity updateTicketComment (@PathVariable Long Id) {
+        this.ticketService.updateTicketComment(Id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

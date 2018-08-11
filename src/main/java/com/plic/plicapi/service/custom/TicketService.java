@@ -18,4 +18,5 @@ public interface TicketService {
     Ticket updateTicket(TicketRequest ticketRequest);
     void deleteTicket(Long Id);
     List<TicketResponse> readTicketHistory(String userId, String mt20id);
+    void updateTicketComment(Long Id);
 }
