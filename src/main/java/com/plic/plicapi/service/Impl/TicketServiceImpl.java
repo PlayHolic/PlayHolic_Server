@@ -23,15 +23,19 @@ public class TicketServiceImpl implements TicketService {
     public void createTicket(TicketRequest ticketRequest) {
         Ticket ticket = new Ticket();
         ticket.setUserId(ticketRequest.getUserId());
-        ticket.setPrfid(ticketRequest.getPrfid());
+        ticket.setMt20id(ticketRequest.getMt20id());
         ticket.setFcltynm(ticketRequest.getFcltynm());
         ticket.setPrfnm(ticketRequest.getPrfnm());
+        ticket.setPrfruntime(ticketRequest.getPrfruntime());
+        ticket.setPrfage(ticketRequest.getPrfage());
+        ticket.setPrfcast(ticketRequest.getPrfcast());
+        ticket.setPrfcrew(ticketRequest.getPrfcrew());
 
         this.ticketRepository.save(ticket);
     }
 
     @Override
-    public List<TicketResponse> readTickets(Long userId) {
+    public List<TicketResponse> readTickets(String userId) {
         List<Ticket> tickets = this.ticketRepository.findByuserId(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
@@ -42,7 +46,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<TicketResponse> readUnscoredTickets(Long userId) {
+    public List<TicketResponse> readUnscoredTickets(String userId) {
         List<Ticket> tickets = this.ticketRepository.findByuserIdAndScoreIsNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
@@ -53,7 +57,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<TicketResponse> readScoredTickets(Long userId) {
+    public List<TicketResponse> readScoredTickets(String userId) {
         List<Ticket> tickets = this.ticketRepository.findByuserIdAndScoreNotNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
@@ -64,7 +68,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<TicketResponse> readNocommentTickets(Long userId) {
+    public List<TicketResponse> readNocommentTickets(String userId) {
         List<Ticket> tickets = this.ticketRepository.findByuserIdAndCommentIsNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
@@ -75,7 +79,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<TicketResponse> readCommentTickets(Long userId) {
+    public List<TicketResponse> readCommentTickets(String userId) {
         List<Ticket> tickets = this.ticketRepository.findByuserIdAndCommentNotNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
@@ -93,12 +97,16 @@ public class TicketServiceImpl implements TicketService {
         if(!ticketOptional.isPresent()) {
             throw new TicketNotFoundException("존재하지 않는 티켓입니다.");
         } else {
-            Ticket ticket = new Ticket();
+            Ticket ticket = ticketOptional.get();
             ticket.setId(ticketRequest.getId());
             ticket.setUserId(ticketRequest.getUserId());
-            ticket.setPrfid(ticketRequest.getPrfid());
+            ticket.setMt20id(ticketRequest.getMt20id());
             ticket.setFcltynm(ticketRequest.getFcltynm());
             ticket.setPrfnm(ticketRequest.getPrfnm());
+            ticket.setPrfruntime(ticketRequest.getPrfruntime());
+            ticket.setPrfage(ticketRequest.getPrfage());
+            ticket.setPrfcast(ticketRequest.getPrfcast());
+            ticket.setPrfcrew(ticketRequest.getPrfcrew());
             ticket.setScore(ticketRequest.getScore());
             ticket.setComment(ticketRequest.getComment());
 
@@ -112,11 +120,37 @@ public class TicketServiceImpl implements TicketService {
     public void deleteTicket(Long Id) {
         Optional<Ticket> ticketOptional = Optional.ofNullable(this.ticketRepository.getOne(Id));
 
-        if(!ticketOptional.isPresent()){
+        if(!ticketOptional.isPresent()) {
             throw new TicketNotFoundException("존재하지 않는 티켓입니다.");
         }else {
             Ticket ticket = ticketOptional.get();
             this.ticketRepository.delete(ticket);
         }
+    }
+
+    @Override
+    public List<TicketResponse> readTicketHistory(String userId, String mt20id) {
+        List<Ticket> tickets = this.ticketRepository.findByUserIdAndMt20id(userId, mt20id);
+        List<TicketResponse> ticketResponses = new ArrayList<>();
+
+        tickets.forEach(ticket -> {
+            ticketResponses.add(TicketResponse.of(ticket));
+        });
+
+        return ticketResponses;
+    }
+
+    @Override
+    public void updateTicketComment(Long Id) {
+        Optional<Ticket> ticketOptional = Optional.ofNullable(this.ticketRepository.getOne(Id));
+
+        if(!ticketOptional.isPresent()) {
+            throw new TicketNotFoundException("존재하지 않는 티켓입니다.");
+        } else {
+            Ticket ticket = ticketOptional.get();
+            ticket.setComment(" ");
+            this.ticketRepository.save(ticket);
+        }
+
     }
 }

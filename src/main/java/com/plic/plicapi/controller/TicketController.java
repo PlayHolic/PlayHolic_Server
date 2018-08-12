@@ -24,31 +24,31 @@ public class TicketController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{userId}")
-    public ResponseEntity<List<TicketResponse>> readTickets (@PathVariable Long userId) {
+    public ResponseEntity<List<TicketResponse>> readTickets (@PathVariable String userId) {
         List<TicketResponse> ticketResponses = this.ticketService.readTickets(userId);
         return new ResponseEntity<>(ticketResponses, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/unscored/{userId}")
-    public ResponseEntity<List<TicketResponse>> readUnscoredTickets (@PathVariable Long userId) {
+    public ResponseEntity<List<TicketResponse>> readUnscoredTickets (@PathVariable String userId) {
         List<TicketResponse> ticketResponses = this.ticketService.readUnscoredTickets(userId);
         return new ResponseEntity<>(ticketResponses, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/scored/{userId}")
-    public ResponseEntity<List<TicketResponse>> readScoredTickets (@PathVariable Long userId) {
+    public ResponseEntity<List<TicketResponse>> readScoredTickets (@PathVariable String userId) {
         List<TicketResponse> ticketResponses = this.ticketService.readScoredTickets(userId);
         return new ResponseEntity<>(ticketResponses, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/nocomment/{userId}")
-    public ResponseEntity<List<TicketResponse>> readNocommentTickets (@PathVariable Long userId) {
+    public ResponseEntity<List<TicketResponse>> readNocommentTickets (@PathVariable String userId) {
         List<TicketResponse> ticketResponses = this.ticketService.readNocommentTickets(userId);
         return new ResponseEntity<>(ticketResponses, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/comment/{userId}")
-    public ResponseEntity<List<TicketResponse>> readcommentTickets (@PathVariable Long userId) {
+    public ResponseEntity<List<TicketResponse>> readcommentTickets (@PathVariable String userId) {
         List<TicketResponse> ticketResponses = this.ticketService.readCommentTickets(userId);
         return new ResponseEntity<>(ticketResponses, HttpStatus.OK);
     }
@@ -62,6 +62,18 @@ public class TicketController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/{Id}")
     public ResponseEntity deleteTicket (@PathVariable Long Id) {
         this.ticketService.deleteTicket(Id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/history/{userId}/{mt20id}")
+    public ResponseEntity<List<TicketResponse>> readTicketHistory (@PathVariable String userId, String mt20id) {
+        List<TicketResponse> ticketResponses = this.ticketService.readTicketHistory(userId, mt20id);
+        return  new ResponseEntity<>(ticketResponses, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/comment/{Id}")
+    public ResponseEntity updateTicketComment (@PathVariable Long Id) {
+        this.ticketService.updateTicketComment(Id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
