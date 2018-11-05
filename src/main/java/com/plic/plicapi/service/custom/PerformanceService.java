@@ -8,8 +8,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface PerformanceService {
-    List<PerformanceResponse> readPerformaces(String keyword);
-    void createrPerformances();
+    List<PerformanceResponse> readPerformances(String keyword);
+
+    void createPerformances();
     PerformanceDetailResponse readPerformanceDetail(String mt20id);
 
 }

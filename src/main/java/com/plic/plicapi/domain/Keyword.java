@@ -12,14 +12,14 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Table(name = "KEYWORD")
-public class Keyword {
+public class Keyword extends BaseEntity {
 
     @Id
     @GeneratedValue
-    Long Id;
+    Long id;
 
     @Column(name = "USER_ID")
-    Long userId;
+    String userId;
 
     @Column(name = "WORD")
     String word;

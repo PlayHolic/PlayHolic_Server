@@ -24,13 +24,13 @@ public class KeywordController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/recent/{userId}")
-    public ResponseEntity<List<KeywordResponse>> readRecentKeywords (@PathVariable Long userId){
+    public ResponseEntity<List<KeywordResponse>> readRecentKeywords(@PathVariable String userId) {
         List<KeywordResponse> keywordResponses = this.keywordService.readRecentKeywords(userId);
         return new ResponseEntity<>(keywordResponses, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/popular/{userId}")
-    public ResponseEntity<List<KeywordResponse>> readPopularKeywords(@PathVariable Long userId){
+    public ResponseEntity<List<KeywordResponse>> readPopularKeywords(@PathVariable String userId) {
         List<KeywordResponse> keywordResponses = this.keywordService.readPopularKeywords(userId);
         return new ResponseEntity<>(keywordResponses, HttpStatus.OK);
     }

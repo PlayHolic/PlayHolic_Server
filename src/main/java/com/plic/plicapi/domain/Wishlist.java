@@ -11,14 +11,14 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Table(name = "WISHLIST")
-public class Wishlist {
+public class Wishlist extends BaseEntity {
 
     @Id
     @GeneratedValue
-    Long Id;
+    Long id;
 
     @Column(name = "USER_ID")
-    Long userId;
+    String userId;
 
     @Column(name = "FACILITY_NAME")
     String fcltynm;

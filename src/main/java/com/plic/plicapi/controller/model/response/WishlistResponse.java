@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @Builder
 public class WishlistResponse {
-    Long Id;
-    Long userId;
+    Long id;
+    String userId;
     String fcltynm;
     String prfnm;
     String prfpdfrom;
@@ -19,7 +19,7 @@ public class WishlistResponse {
 
     public static WishlistResponse of(Wishlist wishlist) {
         return WishlistResponse.builder()
-                .Id(wishlist.getId())
+                .id(wishlist.getId())
                 .userId(wishlist.getUserId())
                 .fcltynm(wishlist.getFcltynm())
                 .prfnm(wishlist.getPrfnm())

@@ -1,4 +1,4 @@
-package com.plic.plicapi.controller.Exception;
+package com.plic.plicapi.controller.exception;
 
 public class KeywordNotFoundException extends RuntimeException {
     public KeywordNotFoundException() { super(); }

@@ -8,5 +8,6 @@ import java.util.List;
 public interface WishlistService {
     void createWishlist(WishlistRequest wishlistRequest);
     void deleteWishlist(Long Id);
-    List<WishlistResponse> readWishlists(Long userId);
+
+    List<WishlistResponse> readWishlists(String userId);
 }

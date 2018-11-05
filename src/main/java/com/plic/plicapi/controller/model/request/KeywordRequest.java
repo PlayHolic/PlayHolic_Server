@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class KeywordRequest {
-    Long Id;
-    Long userId;
+    Long id;
+    String userId;
     String word;
     String date;
 }

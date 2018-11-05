@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TicketRequest {
-    Long Id;
+    Long id;
     String userId;
     String mt20id;
     String fcltynm;

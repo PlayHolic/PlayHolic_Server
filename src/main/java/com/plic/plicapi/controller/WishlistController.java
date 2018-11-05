@@ -30,7 +30,7 @@ public class WishlistController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{userId}")
-    public ResponseEntity<List<WishlistResponse>> readWishlists(@PathVariable Long userId) {
+    public ResponseEntity<List<WishlistResponse>> readWishlists(@PathVariable String userId) {
         List<WishlistResponse> wishlistResponses = this.wishlistService.readWishlists(userId);
         return new ResponseEntity<>(wishlistResponses, HttpStatus.OK);
     }

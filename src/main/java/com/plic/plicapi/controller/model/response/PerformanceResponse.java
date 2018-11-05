@@ -11,7 +11,7 @@ import lombok.Setter;
 @Builder
 public class PerformanceResponse {
 
-    Long Id;
+    Long id;
     String mt20id;
     String prfnm;
     String prfpdfrom;
@@ -24,7 +24,7 @@ public class PerformanceResponse {
 
     public static PerformanceResponse of(Performance performance) {
         return PerformanceResponse.builder()
-                .Id(performance.getId())
+                .id(performance.getId())
                 .mt20id(performance.getMt20id())
                 .prfnm(performance.getPrfnm())
                 .prfpdfrom(performance.getPrfpdfrom())

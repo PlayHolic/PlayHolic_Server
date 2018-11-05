@@ -1,6 +1,6 @@
 package com.plic.plicapi.service.Impl;
 
-import com.plic.plicapi.controller.Exception.WishlistNotSoundException;
+import com.plic.plicapi.controller.exception.WishlistNotFoundException;
 import com.plic.plicapi.controller.model.request.WishlistRequest;
 import com.plic.plicapi.controller.model.response.WishlistResponse;
 import com.plic.plicapi.domain.Wishlist;
@@ -33,11 +33,11 @@ public class WishlistServiceImpl implements WishlistService {
     }
 
     @Override
-    public void deleteWishlist(Long Id) {
-        Optional<Wishlist> wishlistOptional = Optional.ofNullable(this.wishlistRepository.getOne(Id));
+    public void deleteWishlist(Long id) {
+        Optional<Wishlist> wishlistOptional = Optional.ofNullable(this.wishlistRepository.getOne(id));
 
         if(!wishlistOptional.isPresent()){
-            throw new WishlistNotSoundException("존재하지 않는 티켓입니다.");
+            throw new WishlistNotFoundException("존재하지 않는 티켓입니다.");
         }else {
             Wishlist wishlist = wishlistOptional.get();
             this.wishlistRepository.delete(wishlist);
@@ -46,13 +46,11 @@ public class WishlistServiceImpl implements WishlistService {
     }
 
     @Override
-    public List<WishlistResponse> readWishlists(Long userId) {
-        List<Wishlist> wishlists = this.wishlistRepository.findByuserId(userId);
+    public List<WishlistResponse> readWishlists(String userId) {
+        List<Wishlist> wishlists = this.wishlistRepository.findByUserId(userId);
         List<WishlistResponse> wishlistResponses = new ArrayList<>();
 
-        wishlists.forEach(wishlist -> {
-            wishlistResponses.add(WishlistResponse.of(wishlist));
-        });
+        wishlists.forEach(wishlist -> wishlistResponses.add(WishlistResponse.of(wishlist)));
 
         return  wishlistResponses;
     }

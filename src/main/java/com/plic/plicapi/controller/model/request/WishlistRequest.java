@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class WishlistRequest {
-    Long Id;
-    Long userId;
+    Long id;
+    String userId;
     String fcltynm;
     String prfnm;
     String prfpdfrom;

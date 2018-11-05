@@ -16,7 +16,7 @@ public class Performance extends BaseEntity {
 
     @Id
     @GeneratedValue
-    Long Id;
+    Long id;
 
     @Column(name="PERFORMANCE_ID")
     String mt20id; //공연 id
@@ -43,5 +43,5 @@ public class Performance extends BaseEntity {
     String prfstate;	//공연상태	공연중
 
     @Column(name =  "OPEN_RUN")
-    String openrun;	//오픈런	Y
+    String openrun;    //오픈런, 종료 일자를 정하지 않고 계속 공연 Y
 }

@@ -46,7 +46,7 @@ public class PerformanceServiceImpl implements PerformanceService {
 
 
     @Override
-    public List<PerformanceResponse> readPerformaces(String keyword) {
+    public List<PerformanceResponse> readPerformances(String keyword) {
         List<Performance> performances = this.performanceRepository.findByPrfnmContaining(keyword);
         List<PerformanceResponse> performanceResponses = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class PerformanceServiceImpl implements PerformanceService {
 
     @Override
     @Scheduled(cron = "0 0 0 * * *")
-    public void createrPerformances() {
+    public void createPerformances() {
         this.performanceRepository.deleteAll();
 
         RestTemplate restTemplate = new RestTemplate();

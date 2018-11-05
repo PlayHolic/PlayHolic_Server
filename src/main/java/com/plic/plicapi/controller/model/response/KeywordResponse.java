@@ -9,14 +9,14 @@ import lombok.Setter;
 @Setter
 @Builder
 public class KeywordResponse {
-    Long Id;
-    Long userId;
+    Long id;
+    String userId;
     String word;
     String nowDate;
 
     public static KeywordResponse of (Keyword keyword){
         return KeywordResponse.builder()
-                .Id(keyword.getId())
+                .id(keyword.getId())
                 .userId(keyword.getUserId())
                 .word(keyword.getWord())
                 .nowDate(keyword.getNowDate())

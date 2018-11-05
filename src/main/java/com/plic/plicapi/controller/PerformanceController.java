@@ -23,7 +23,7 @@ public class PerformanceController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{keyword}")
     public ResponseEntity<List<PerformanceResponse>> readPerformances(@PathVariable String keyword) {
-        List<PerformanceResponse> performanceResponses = this.performanceService.readPerformaces(keyword);
+        List<PerformanceResponse> performanceResponses = this.performanceService.readPerformances(keyword);
         return new ResponseEntity<>(performanceResponses, HttpStatus.OK);
     }
 

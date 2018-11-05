@@ -1,6 +1,6 @@
 package com.plic.plicapi.service.Impl;
 
-import com.plic.plicapi.controller.Exception.TicketNotFoundException;
+import com.plic.plicapi.controller.exception.TicketNotFoundException;
 import com.plic.plicapi.controller.model.request.TicketRequest;
 import com.plic.plicapi.controller.model.response.TicketResponse;
 import com.plic.plicapi.domain.Ticket;
@@ -36,56 +36,46 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<TicketResponse> readTickets(String userId) {
-        List<Ticket> tickets = this.ticketRepository.findByuserId(userId);
+        List<Ticket> tickets = this.ticketRepository.findByUserId(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
-        tickets.forEach(ticket -> {
-            ticketResponses.add(TicketResponse.of(ticket));
-        });
+        tickets.forEach(ticket -> ticketResponses.add(TicketResponse.of(ticket)));
         return ticketResponses;
     }
 
     @Override
     public List<TicketResponse> readUnscoredTickets(String userId) {
-        List<Ticket> tickets = this.ticketRepository.findByuserIdAndScoreIsNull(userId);
+        List<Ticket> tickets = this.ticketRepository.findByUserIdAndScoreIsNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
-        tickets.forEach(ticket -> {
-            ticketResponses.add(TicketResponse.of(ticket));
-        });
+        tickets.forEach(ticket -> ticketResponses.add(TicketResponse.of(ticket)));
         return ticketResponses;
     }
 
     @Override
     public List<TicketResponse> readScoredTickets(String userId) {
-        List<Ticket> tickets = this.ticketRepository.findByuserIdAndScoreNotNull(userId);
+        List<Ticket> tickets = this.ticketRepository.findByUserIdAndScoreNotNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
-        tickets.forEach(ticket -> {
-            ticketResponses.add(TicketResponse.of(ticket));
-        });
+        tickets.forEach(ticket -> ticketResponses.add(TicketResponse.of(ticket)));
         return ticketResponses;
     }
 
     @Override
     public List<TicketResponse> readNocommentTickets(String userId) {
-        List<Ticket> tickets = this.ticketRepository.findByuserIdAndCommentIsNull(userId);
+        List<Ticket> tickets = this.ticketRepository.findByUserIdAndCommentIsNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
-        tickets.forEach(ticket -> {
-            ticketResponses.add(TicketResponse.of(ticket));
-        });
+        tickets.forEach(ticket -> ticketResponses.add(TicketResponse.of(ticket)));
         return ticketResponses;
     }
 
     @Override
     public List<TicketResponse> readCommentTickets(String userId) {
-        List<Ticket> tickets = this.ticketRepository.findByuserIdAndCommentNotNull(userId);
+        List<Ticket> tickets = this.ticketRepository.findByUserIdAndCommentNotNull(userId);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
-        tickets.forEach(ticket -> {
-            ticketResponses.add(TicketResponse.of(ticket));
-        });
+        tickets.forEach(ticket -> ticketResponses.add(TicketResponse.of(ticket)));
         return ticketResponses;
     }
 
@@ -133,9 +123,7 @@ public class TicketServiceImpl implements TicketService {
         List<Ticket> tickets = this.ticketRepository.findByUserIdAndMt20id(userId, mt20id);
         List<TicketResponse> ticketResponses = new ArrayList<>();
 
-        tickets.forEach(ticket -> {
-            ticketResponses.add(TicketResponse.of(ticket));
-        });
+        tickets.forEach(ticket -> ticketResponses.add(TicketResponse.of(ticket)));
 
         return ticketResponses;
     }

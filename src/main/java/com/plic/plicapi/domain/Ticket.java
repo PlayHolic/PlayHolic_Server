@@ -15,30 +15,30 @@ public class Ticket extends BaseEntity {
 
     @Id
     @GeneratedValue
-    Long Id;
+    Long id;
 
     @Column(name = "USER_ID")
     String userId;
 
-    @Column(name = "PERFORMENCE_ID")
+    @Column(name = "PERFORMANCE_ID")
     String mt20id;
 
     @Column(name = "FACILITY_NAME")
     String fcltynm;
 
-    @Column(name = "PERFORMENCE_NAME")
+    @Column(name = "PERFORMANCE_NAME")
     String prfnm;
 
-    @Column(name = "PERFORMENCE_RUNTIME")
+    @Column(name = "PERFORMANCE_RUNTIME")
     String prfruntime;
 
-    @Column(name = "PERFORMENCE_AGE")
+    @Column(name = "PERFORMANCE_AGE")
     String prfage;
 
-    @Column(name = "PERFORMENCE_CAST")
+    @Column(name = "PERFORMANCE_CAST")
     String prfcast;
 
-    @Column(name = "PERFORMENCE_CREW")
+    @Column(name = "PERFORMANCE_CREW")
     String prfcrew;
 
     @Column(name = "SCORE")

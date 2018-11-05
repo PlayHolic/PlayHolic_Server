@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class TicketResponse {
-    Long Id;
+    Long id;
     String userId;
     String mt20id;
     String fcltynm;
@@ -23,7 +23,7 @@ public class TicketResponse {
 
     public static TicketResponse of(Ticket ticket) {
         return TicketResponse.builder()
-                .Id(ticket.getId())
+                .id(ticket.getId())
                 .userId(ticket.getUserId())
                 .mt20id(ticket.getMt20id())
                 .fcltynm(ticket.getFcltynm())

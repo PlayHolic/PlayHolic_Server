@@ -9,10 +9,14 @@ import java.util.List;
 
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
-    List<Ticket> findByuserId(String userId);
-    List<Ticket> findByuserIdAndScoreIsNull(String userId);
-    List<Ticket> findByuserIdAndScoreNotNull(String userId);
-    List<Ticket> findByuserIdAndCommentIsNull(String userId);
-    List<Ticket> findByuserIdAndCommentNotNull(String userId);
+    List<Ticket> findByUserId(String userId);
+
+    List<Ticket> findByUserIdAndScoreIsNull(String userId);
+
+    List<Ticket> findByUserIdAndScoreNotNull(String userId);
+
+    List<Ticket> findByUserIdAndCommentIsNull(String userId);
+
+    List<Ticket> findByUserIdAndCommentNotNull(String userId);
     List<Ticket> findByUserIdAndMt20id(String userId, String mt20id);
 }

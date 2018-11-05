@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface KeywordService {
     void createKeyword(KeywordRequest keywordRequest);
-    List<KeywordResponse> readRecentKeywords(Long userId);
-    List<KeywordResponse> readPopularKeywords(Long userId);
+
+    List<KeywordResponse> readRecentKeywords(String userId);
+
+    List<KeywordResponse> readPopularKeywords(String userId);
 }
