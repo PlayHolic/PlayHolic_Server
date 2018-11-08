@@ -11,4 +11,6 @@ public interface PerformanceRepository extends JpaRepository<Performance, Long> 
     List<Performance> findByPrfnmContaining(String prfnm);
     void deleteAll();
 
+    Performance findByPerformanceId(String performanceId);
+
 }

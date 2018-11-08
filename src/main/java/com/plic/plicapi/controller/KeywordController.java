@@ -34,10 +34,4 @@ public class KeywordController {
         List<KeywordResponse> keywordResponses = this.keywordService.readPopularKeywords(userId);
         return new ResponseEntity<>(keywordResponses, HttpStatus.OK);
     }
-
-
-
-
-
-
 }
