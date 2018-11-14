@@ -16,14 +16,14 @@ public class Keyword extends BaseEntity {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     @Column(name = "USER_ID")
-    String userId;
+    private String userId;
 
     @Column(name = "WORD")
-    String word;
+    private String word;
 
     @Column(name = "NOW_DATE")
-    String nowDate;
+    private String nowDate;
 }

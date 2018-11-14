@@ -15,23 +15,23 @@ public class Wishlist extends BaseEntity {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     @Column(name = "USER_ID")
-    String userId;
+    private String userId;
 
     @Column(name = "FACILITY_NAME")
-    String fcltynm;
+    private String fcltynm;
 
     @Column(name = "PERFORMANCE_NAME")
-    String prfnm;
+    private String prfnm;
 
     @Column(name = "PERFORMANCE_START_DATE")
-    String prfpdfrom;
+    private String prfpdfrom;
 
     @Column(name = "PERFORMANCE_END_DATE")
-    String prfpdto;
+    private String prfpdto;
 
     @Column(name = "POSTER")
-    String poster;
+    private String poster;
 }
