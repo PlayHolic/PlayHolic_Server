@@ -18,6 +18,7 @@ public class Keyword extends BaseEntity {
     @GeneratedValue
     private Long id;
 
+    // TODO user 테이블을 만든다면 참조 무결성 필요
     @Column(name = "USER_ID")
     private String userId;
 

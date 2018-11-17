@@ -47,7 +47,7 @@ public class PerformanceServiceImpl implements PerformanceService {
 
     @Override
     public List<PerformanceResponse> readPerformances(String keyword) {
-        List<Performance> performances = this.performanceRepository.findByPrfnmContaining(keyword);
+        List<Performance> performances = this.performanceRepository.findByPerformanceNameContaining(keyword);
         List<PerformanceResponse> performanceResponses = new ArrayList<>();
 
         performances.forEach(performance -> {
@@ -69,7 +69,8 @@ public class PerformanceServiceImpl implements PerformanceService {
         calendar.set(year, Calendar.MONTH, Calendar.DAY_OF_MONTH);
         this.endDate = dateFormat.format(calendar);
 
-        String requestUrl = this.baseUrl + "?service=" + this.serviceKey + "&stdate=" + this.startDate + "&eddate=" + this.endDate + "&cpage=1&rows=20000";
+        String requestUrl = this.baseUrl + "?service=" + this.serviceKey
+                + "&stdate=" + this.startDate + "&eddate=" + this.endDate + "&cpage=1&rows=20000";
 
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
         String result = restTemplate.getForObject(requestUrl , String.class);

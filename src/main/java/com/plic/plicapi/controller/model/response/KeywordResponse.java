@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @Builder
 public class KeywordResponse {
-    Long id;
-    String userId;
-    String word;
-    String nowDate;
+    private Long id;
+    private String userId;
+    private String word;
+    private String nowDate;
 
-    public static KeywordResponse of (Keyword keyword){
+    public static KeywordResponse of(Keyword keyword) {
         return KeywordResponse.builder()
                 .id(keyword.getId())
                 .userId(keyword.getUserId())

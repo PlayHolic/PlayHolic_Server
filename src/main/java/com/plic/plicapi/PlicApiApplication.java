@@ -30,4 +30,9 @@ public class PlicApiApplication {
  *                       -> 관람 내역 리스트 페이지<완료>
  * - 검색 페이지: 결과 리스트 <완료>, 최근 검색어 [수재], 인기 검색어(한 달, firebase 사용?) [가인]
  *
+ * batch 프로세스
+ * 1. db에서 상영중 / 상영 예정인 모든 데이터를 리스트업
+ * 2. 현재 상영중 / 상영 예정인 연극에 대하여 performance, detail 갱신
+ * 3. 새로 추가된 데이터는 어떻게 받아올 것인가? - 일정 기간을 (i.e. 오늘로부터 6개월?) 시작 날짜로 하여 performanceName(unique)가 if not exists, 추가
+ *
  * */

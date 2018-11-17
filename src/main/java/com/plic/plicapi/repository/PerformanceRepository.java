@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface PerformanceRepository extends JpaRepository<Performance, Long> {
-    List<Performance> findByPrfnmContaining(String prfnm);
+    List<Performance> findByPerformanceNameContaining(String prfnm);
     void deleteAll();
 
     Performance findByPerformanceId(String performanceId);

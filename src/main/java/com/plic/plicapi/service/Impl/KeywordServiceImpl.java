@@ -29,12 +29,12 @@ public class KeywordServiceImpl implements KeywordService {
         keyword.setWord(keywordRequest.getWord());
         keyword.setNowDate(simpleDateFormat.format(date));
 
-        List<Keyword> keywords = this.keywordRepository.findByUserId(keywordRequest.getUserId());
+        // List<Keyword> keywords = this.keywordRepository.findByUserId(keywordRequest.getUserId());
 
-        if(keywords.size() == 10) {
+/*        if(keywords.size() == 10) {
            Keyword deleteKeyword = keywords.get(0);
            this.keywordRepository.delete(deleteKeyword);
-        }
+        }*/ // 인기 검색어를 위해서는 검색어를 보존해야함
 
         this.keywordRepository.save(keyword);
     }
@@ -42,13 +42,9 @@ public class KeywordServiceImpl implements KeywordService {
     //최근 검색어
     public List<KeywordResponse> readRecentKeywords(String userId) {
 
-        //select
         List<Keyword> keywords = this.keywordRepository.findByUserId(userId);
-
         List<KeywordResponse> keywordResponses = new ArrayList<>();
-
         keywords.forEach(keyword -> keywordResponses.add(KeywordResponse.of(keyword)));
-
         return keywordResponses;
     }
 

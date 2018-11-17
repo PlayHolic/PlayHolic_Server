@@ -11,31 +11,27 @@ import lombok.Setter;
 @Builder
 public class PerformanceResponse {
 
-    Long id;
-    String mt20id;
-    String prfnm;
-    String prfpdfrom;
-    String prfpdto;
-    String fcltynm;
-    String poster;
-    String genrenm;
-    String prfstate;
-    String openrun;
+    private Long id;
+    private String performanceId;
+    private String performanceName;
+    private String startDate;
+    private String endDate;
+    private String facilityName;
+    private String poster;
+    private String genre;
+    private String state;
 
     public static PerformanceResponse of(Performance performance) {
         return PerformanceResponse.builder()
                 .id(performance.getId())
-                .mt20id(performance.getMt20id())
-                .prfnm(performance.getPrfnm())
-                .prfpdfrom(performance.getPrfpdfrom())
-                .prfpdto(performance.getPrfpdto())
-                .fcltynm(performance.getFcltynm())
+                .performanceId(performance.getPerformanceId())
+                .performanceName(performance.getPerformanceName())
+                .startDate(performance.getStartDate())
+                .endDate(performance.getEndDate())
+                .facilityName(performance.getFacilityName())
                 .poster(performance.getPoster())
-                .genrenm(performance.getGenrenm())
-                .prfstate(performance.getPrfstate())
-                .openrun(performance.getOpenrun())
+                .genre(performance.getGenre())
+                .state(performance.getState())
                 .build();
-
-
     }
 }
